@@ -19,9 +19,21 @@ public class User extends Model {
     public Long id;
     public String name;
 
+    public User(String name) {
+        this.name = name;
+    }
+
     private static Finder<Long, User> find = new Finder<Long, User>(User.class);
 
     public static JsonNode findById(long id){
         return Json.toJson(find.byId(id));
+    }
+    public static JsonNode save(User user){
+        user.save();
+        return Json.toJson(user);
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

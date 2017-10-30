@@ -1,5 +1,7 @@
 package services.akkamodel;
 
+import models.User;
+
 import java.io.Serializable;
 import java.util.Optional;
 
@@ -13,8 +15,15 @@ public class UserActorBeans {
         public Query(Long id) {
             this.id = id;
         }
-    };
-    public static class userSave{
+    }
 
+    ;
+
+    public static class UserSave {
+        String name;
+
+        public UserSave(String name) {
+            this.name = name;
+        }
     }
 }

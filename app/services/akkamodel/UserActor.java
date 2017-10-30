@@ -30,8 +30,11 @@ public class UserActor extends AbstractActor {
         return receiveBuilder()
                 .match(UserActorBeans.Query.class, r ->
                     sender().tell(User.findById(r.id), self())
-                ).
-                matchAny(x ->sender().tell(
+                )
+                .match(UserActorBeans.UserSave.class,r->
+                    sender().tell(User.save(new User(r.name)),self())
+                )
+                .matchAny(x ->sender().tell(
                         new Status.Failure(new Exception("unknown message")), self()
                 ))
                 .build();

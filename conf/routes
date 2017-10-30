@@ -10,6 +10,7 @@ GET     /count                      controllers.CountController.count
 GET     /message                    controllers.AsyncController.message
 
 GET     /user/:id                   controllers.UserController.query(id:Long)
+POST    /user/:name                 controllers.UserController.save(name:String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
